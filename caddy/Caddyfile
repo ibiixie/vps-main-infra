@@ -1,0 +1,7 @@
+{
+    email {$EMAIL}
+}
+
+fpc.{$DOMAIN} {
+    reverse_proxy /map* minecraft:8100
+}

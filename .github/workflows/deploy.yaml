@@ -1,0 +1,27 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: main
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Deploy
+        uses: cssnr/stack-deploy-action@v1
+        with:
+          name: infra
+          file: compose.yaml
+          host: ${{ vars.DOCKER_HOST }}
+          port: ${{ vars.DOCKER_PORT }}
+          user: ${{ vars.DOCKER_USER }}
+          ssh_key: ${{ secrets.DOCKER_SSH_KEY }}
+          mode: compose
+          args: --remove-orphans --force-recreate --build
+        env:
+          DOMAIN: ${{ vars.DOMAIN }}
+          EMAIL: ${{ secrets.EMAIL }}

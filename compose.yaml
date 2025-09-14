@@ -1,0 +1,35 @@
+services:
+  caddy:
+    build:
+      context: ./caddy
+      no_cache: true
+    cap_add:
+      - NET_ADMIN
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - public
+      - proxied
+
+  whoami:
+    image: traefik/whoami
+    command:
+      - --name=oci
+    networks:
+      - proxied
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  public:
+    name: public
+  proxied:
+    name: proxied
