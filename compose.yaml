@@ -1,7 +1,7 @@
 services:
   caddy:
     build:
-      context: ./caddy
+      dockerfile: ./caddy/Dockerfile
       no_cache: true
     cap_add:
       - NET_ADMIN
