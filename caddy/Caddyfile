@@ -3,6 +3,6 @@
 }
 
 fpc.{$DOMAIN} {
-    reverse_proxy /map* minecraft:8100
     reverse_proxy /whoami* whoami:80
+    reverse_proxy minecraft:8100
 }
