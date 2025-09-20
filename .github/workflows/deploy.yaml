@@ -24,4 +24,5 @@ jobs:
           args: --remove-orphans --force-recreate --build
         env:
           DOMAIN: ${{ vars.DOMAIN }}
+          DOMAIN_FPC: ${{ vars.DOMAIN_FPC }}
           EMAIL: ${{ secrets.EMAIL }}
