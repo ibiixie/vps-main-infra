@@ -6,3 +6,8 @@ fpc.{$DOMAIN} {
     reverse_proxy /whoami* whoami:80
     reverse_proxy minecraft:8100
 }
+
+mc.{$DOMAIN_FPC} {
+    reverse_proxy /whoami* whoami:80
+    reverse_proxy minecraft:8100
+}
